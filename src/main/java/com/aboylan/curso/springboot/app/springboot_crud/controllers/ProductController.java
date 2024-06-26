@@ -1,4 +1,4 @@
-package com.aboylan.curso.springboot.app.springbootcrud.controllers;
+package com.aboylan.curso.springboot.app.springboot_crud.controllers;
 
 import java.util.List;
 import java.util.Optional;
@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.aboylan.curso.springboot.app.springbootcrud.entities.Product;
-import com.aboylan.curso.springboot.app.springbootcrud.services.ProductService;
+import com.aboylan.curso.springboot.app.springboot_crud.entities.Product;
+import com.aboylan.curso.springboot.app.springboot_crud.services.ProductService;
 import org.springframework.web.bind.annotation.PutMapping;
 
 @RestController
@@ -46,6 +46,7 @@ public class ProductController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Product> update(@PathVariable Long id, @RequestBody Product product) {
+        product.setId(id);
         return ResponseEntity.status(HttpStatus.CREATED).body(service.save(product));
     }
 

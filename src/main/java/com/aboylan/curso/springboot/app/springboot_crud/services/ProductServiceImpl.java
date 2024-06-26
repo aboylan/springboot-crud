@@ -1,4 +1,4 @@
-package com.aboylan.curso.springboot.app.springbootcrud.services;
+package com.aboylan.curso.springboot.app.springboot_crud.services;
 
 import java.util.List;
 import java.util.Optional;
@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.aboylan.curso.springboot.app.springbootcrud.entities.Product;
-import com.aboylan.curso.springboot.app.springbootcrud.repositories.ProductRepository;
+import com.aboylan.curso.springboot.app.springboot_crud.entities.Product;
+import com.aboylan.curso.springboot.app.springboot_crud.repositories.ProductRepository;
 
 @Service
 public class ProductServiceImpl implements ProductService {

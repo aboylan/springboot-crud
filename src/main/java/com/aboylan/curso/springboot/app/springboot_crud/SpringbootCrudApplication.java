@@ -1,4 +1,4 @@
-package com.aboylan.curso.springboot.app.springbootcrud;
+package com.aboylan.curso.springboot.app.springboot_crud;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

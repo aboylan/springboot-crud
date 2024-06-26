@@ -1,9 +1,9 @@
-package com.aboylan.curso.springboot.app.springbootcrud.services;
+package com.aboylan.curso.springboot.app.springboot_crud.services;
 
 import java.util.List;
 import java.util.Optional;
 
-import com.aboylan.curso.springboot.app.springbootcrud.entities.Product;
+import com.aboylan.curso.springboot.app.springboot_crud.entities.Product;
 
 public interface ProductService {
 
