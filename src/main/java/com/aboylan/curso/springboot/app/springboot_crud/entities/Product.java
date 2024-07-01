@@ -1,5 +1,6 @@
 package com.aboylan.curso.springboot.app.springboot_crud.entities;
 
+import com.aboylan.curso.springboot.app.springboot_crud.validation.IsExistsDb;
 import com.aboylan.curso.springboot.app.springboot_crud.validation.IsRequired;
 
 import jakarta.persistence.Entity;
@@ -8,8 +9,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
+// import jakarta.validation.constraints.NotBlank;
+// import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
@@ -21,6 +22,10 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @IsRequired
+    @IsExistsDb
+    private String sku;
+
     // @NotEmpty(message = "{NotEmpty.product.name}")
     @IsRequired(message = "{IsRequired.product.name}")
     @Size(min = 3, max = 20)
@@ -31,7 +36,7 @@ public class Product {
     private Integer price;
 
     // @NotBlank(message = "{NotBlank.product.description}")
-    @IsRequired()
+    @IsRequired
     private String description;
 
     public Long getId() {
@@ -64,6 +69,14 @@ public class Product {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getSku() {
+        return sku;
+    }
+
+    public void setSku(String sku) {
+        this.sku = sku;
     }
 
 }
