@@ -1,8 +1,6 @@
 package com.aboylan.curso.springboot.app.springboot_crud.security.filter;
 
-import static com.aboylan.curso.springboot.app.springboot_crud.security.TokenJwtConfig.HEADER_AUTHORIZATION;
-import static com.aboylan.curso.springboot.app.springboot_crud.security.TokenJwtConfig.PREFIX_TOKEN;
-import static com.aboylan.curso.springboot.app.springboot_crud.security.TokenJwtConfig.SECRET_KEY;
+import static com.aboylan.curso.springboot.app.springboot_crud.security.TokenJwtConfig.*;
 
 import java.io.IOException;
 import java.util.Collection;
@@ -91,8 +89,21 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         body.put("message", String.format("Hola %s has iniciado sesion con exito!", username));
 
         response.getWriter().write(new ObjectMapper().writeValueAsString(body));
-        response.setContentType("application/json");
+        response.setContentType(CONTENT_TYPE);
         response.setStatus(200);
+    }
+
+    @Override
+    protected void unsuccessfulAuthentication(HttpServletRequest request, HttpServletResponse response,
+            AuthenticationException failed) throws IOException, ServletException {
+
+        Map<String, String> body = new HashMap<>();
+        body.put("message", "Error en la autenticacion username o password incorrectos");
+        body.put("error", failed.getMessage());
+
+        response.getWriter().write(new ObjectMapper().writeValueAsString(body));
+        response.setStatus(401);
+        response.setContentType(CONTENT_TYPE);
     }
 
 }
